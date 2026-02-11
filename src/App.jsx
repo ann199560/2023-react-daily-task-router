@@ -2,7 +2,14 @@ import "./App.css";
 import { Routes, Route, HashRouter, NavLink } from "react-router-dom";
 
 const Homepage = () => {
-  return <p>這是首頁</p>;
+  return (
+    <>
+      <a href="https://hackmd.io/vt5PCuDoTUewI4Rj5UlQvQ?view">
+        Day43 - React 路由練習 (1) - React Router 建立
+      </a>
+      <p>這是首頁</p>
+    </>
+  );
 };
 const Todo = () => {
   return <p>這是 Todo 頁面</p>;
