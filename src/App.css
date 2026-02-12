@@ -20,3 +20,7 @@
 .nav-link a:hover, .nav-link a:focus, .nav-link a:active {
   background-color:#4682b4;
 }
+
+.d-block{
+  display: block;
+}
