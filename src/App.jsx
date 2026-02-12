@@ -1,5 +1,16 @@
 import "./App.css";
-import { Routes, Route, HashRouter, NavLink } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  HashRouter,
+  NavLink,
+  useNavigate,
+} from "react-router-dom";
+
+const LogOut = () => {
+  const navigate = useNavigate();
+  return <button onClick={() => navigate("/login")}>登出</button>;
+};
 
 const Homepage = () => {
   return (
@@ -7,12 +18,20 @@ const Homepage = () => {
       <a href="https://hackmd.io/vt5PCuDoTUewI4Rj5UlQvQ?view">
         Day43 - React 路由練習 (1) - React Router 建立
       </a>
+      <a href="https://hackmd.io/Q8hWng_-Q3yCE5rPk1iatg">
+        Day44 - React 路由練習 (2) - React Router Navigate
+      </a>
       <p>這是首頁</p>
     </>
   );
 };
 const Todo = () => {
-  return <p>這是 Todo 頁面</p>;
+  return (
+    <>
+      <p>這是 Todo 頁面</p>
+      <LogOut />
+    </>
+  );
 };
 const Login = () => {
   return <p>這是登入頁面</p>;
