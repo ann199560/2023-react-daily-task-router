@@ -5,11 +5,23 @@ import {
   HashRouter,
   NavLink,
   useNavigate,
+  Outlet,
+  useParams,
 } from "react-router-dom";
 
 const LogOut = () => {
   const navigate = useNavigate();
   return <button onClick={() => navigate("/login")}>登出</button>;
+};
+
+const PostDetail = () => {
+  let params = useParams(); // 取得 URL 中的參數
+  return (
+    <>
+      <p>這是 Post 詳細頁面</p>
+      <p>PostID：{params.postId}</p>
+    </>
+  );
 };
 
 const Homepage = () => {
@@ -24,10 +36,18 @@ const Homepage = () => {
       <a href="https://hackmd.io/Q8hWng_-Q3yCE5rPk1iatg" className="d-block">
         Day44 - React 路由練習 (2) - React Router Navigate
       </a>
+      <a
+        href="https://hackmd.io/NYbinwiNQ6uXHGxS3MtbkQ?view"
+        className="d-block"
+      >
+        Day45 - React 路由練習 (3) - React Router 動態路由
+      </a>
+
       <p>這是首頁</p>
     </>
   );
 };
+
 const Todo = () => {
   return (
     <>
@@ -36,11 +56,22 @@ const Todo = () => {
     </>
   );
 };
+
 const Login = () => {
   return <p>這是登入頁面</p>;
 };
+
 const Register = () => {
   return <p>這是註冊頁面</p>;
+};
+
+const Post = () => {
+  return (
+    <>
+      <p>這是 Post 頁面</p>
+      <Outlet />
+    </>
+  );
 };
 
 function App() {
@@ -60,6 +91,9 @@ function App() {
           <NavLink to="/todo">
             <p>Todo 頁面</p>
           </NavLink>
+          <NavLink to="/post">
+            <p>Post 頁面</p>
+          </NavLink>
         </div>
         {/* Routes, Route 練習區 */}
         <Routes>
@@ -67,6 +101,9 @@ function App() {
           <Route path="/register" element={<Register />} />
           <Route path="/login" element={<Login />} />
           <Route path="/todo" element={<Todo />} />
+          <Route path="/post" element={<Post />}>
+            <Route path=":postId" element={<PostDetail />} />
+          </Route>
           <Route
             path="*"
             element={
